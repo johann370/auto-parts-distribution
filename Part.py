@@ -1,6 +1,6 @@
-part_number = 0;
-part_name = '';
+part_number = 0
+part_name = ''
 
 editPartName(part_number){
-    part_name = input("Enter the new part name: ");
+    part_name = input("Enter the new part name: ")
 }
