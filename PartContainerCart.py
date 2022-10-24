@@ -1,6 +1,7 @@
-container_number = 0
-container_category = ''
+class PartContainerCart:
+    container_number = 0
+    container_category = ''
 
-def reportAddedToCart():
+    def reportAddedToCart():
 
-def setOrderStatus():
+    def setOrderStatus():

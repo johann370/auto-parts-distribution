@@ -1,9 +1,31 @@
-employee_id = 0
+class Employee:
 
-def lookForPart():
+    employee_id = 0
 
-def placeOrder():
+    def searchItems():
 
-def enterOrderInfo():
+    def placeOrder():
 
-def receiveOrder():
+    def enterOrderInfo():
+
+    def receiveOrder():
+    
+    def getItemsList():
+
+    def updateCart():
+
+    def filterItems():
+
+    def editItems():
+
+    def editItemCounts():
+
+    def sortItems():
+
+    def setOrderStatus():
+
+    def sendReceipt():
+
+    def processPayment():
+
+    def saveOrder():
