@@ -6,7 +6,7 @@ from CarPart import CarPart
 class Database(Protocol):
     inventory: dict
 
-    def __init__(self, inventory) -> None:
+    def __init__(self, inventory={}) -> None:
         raise NotImplementedError
 
     def get_part(self, part_id) -> CarPart:
