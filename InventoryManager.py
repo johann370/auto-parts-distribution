@@ -1,10 +1,10 @@
 from CarPart import CarPart
-from Database import Database
+from InventoryDatabase import InventoryDatabase
 from UI import UI
 
 
 class InventoryManager:
-    def __init__(self, ui: UI, inventory: Database) -> None:
+    def __init__(self, ui: UI, inventory: InventoryDatabase) -> None:
         self.inventory = inventory
         self.ui = ui
 

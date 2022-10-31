@@ -1,12 +1,11 @@
 from CLI import CLI
 from InventoryManager import InventoryManager
-from SQLiteDatabase import SQLiteDatabase
-from TestDatabase import TestDatabase
+from SQLiteInventoryDatabase import SQLiteInventoryDatabase
 
 
 def main():
     ui = CLI()
-    database = SQLiteDatabase(database='CarParts.db')
+    database = SQLiteInventoryDatabase(database='CarParts.db')
     im = InventoryManager(ui, database)
     im.display_parts()
     im.delete_part()

@@ -3,7 +3,7 @@ from sqlite3 import Error
 from CarPart import CarPart
 
 
-class SQLiteDatabase:
+class SQLiteInventoryDatabase:
     inventory: dict
 
     def __init__(self, inventory={}, database='CarParts.db') -> None:

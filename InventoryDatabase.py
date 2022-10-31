@@ -3,7 +3,7 @@ from typing import Protocol
 from CarPart import CarPart
 
 
-class Database(Protocol):
+class InventoryDatabase(Protocol):
     inventory: dict
 
     def __init__(self, inventory={}) -> None:
