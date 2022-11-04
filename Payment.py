@@ -6,3 +6,6 @@ class Payment:
     def inputPartPaymentAmount():
         payment_amount = input("Enter the payment amount for the part: ")
         full_payment_amount += part_payment_amount
+
+    def processPayment(account_number):
+        pass
