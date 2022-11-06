@@ -1,18 +1,23 @@
-import sqlite3
+from typing import Protocol
+
+from Order import Order
 
 
-CREATE TABLE IF NOT EXISTS orders(
-  id integer PRIMARY KEY,
-  parts list,
-  account_number integer
-)
-  
-CREATE TABLE IF NOT EXISTS employees(
-  employee_id integer PRIMARY KEY,
-  
-)
-  
+class OrderDatabase(Protocol):
+    order: dict
 
-CREATE TABLE IF NOT EXISTS customers(
- customer_id integer PRIMARY KEY 
-)
+    def __init__(self, order={}) -> None:
+        raise NotImplementedError
+
+    def get_order(self, order_id) -> Order:
+        raise NotImplementedError
+
+    def add_order(self, new_order) -> None:
+        raise NotImplementedError
+
+    def delete_order(self, id_to_delete) -> None:
+        raise NotImplementedError
+
+    def update_order(self, id_to_update, updated_order) -> None:
+        raise NotImplementedError
+
