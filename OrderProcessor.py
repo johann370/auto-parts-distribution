@@ -1,6 +1,5 @@
 
 from Order import Order
-#currently, Database is the Inventory Manager; an Order Processor database needs to be made
 from Database import Database
 from UI import UI
 from Payment import Payment
