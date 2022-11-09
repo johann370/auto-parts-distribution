@@ -11,7 +11,15 @@ class SQLiteInventoryDatabase:
         self.inventory = self.get_all_data()
 
     def get_part(self, part_id) -> CarPart:
-        return self.inventory[part_id]
+        query = 'SELECT * FROM car_parts WHERE id = ?'
+        cursor = self.connection.cursor()
+        cursor.execute(query, (part_id,))
+        result = cursor.fetchone()
+
+        car_part = CarPart(id=result[0], name=result[1], count=result[2], price=result[
+            3], manufacturer=result[4], category=result[5])
+
+        return car_part
 
     def add_part(self, new_part) -> None:
         query = 'INSERT INTO car_parts(name, count, price, manufacturer, category) VALUES(?, ?, ?, ?, ?)'
@@ -20,17 +28,11 @@ class SQLiteInventoryDatabase:
                        new_part.price, new_part.manufacturer, new_part.category))
         self.connection.commit()
 
-        part_id = cursor.lastrowid
-        new_part.id = part_id
-        self.inventory[new_part.id] = new_part
-
     def delete_part(self, id_to_delete) -> None:
         query = 'DELETE FROM car_parts WHERE id = ?'
         cursor = self.connection.cursor()
         cursor.execute(query, (id_to_delete,))
         self.connection.commit()
-
-        self.inventory.pop(id_to_delete)
 
     def update_part(self, id_to_update, updated_part) -> None:
         query = 'UPDATE car_parts SET name = ?, count = ?, price = ?, manufacturer = ?, category = ? WHERE id = ?'
@@ -39,10 +41,13 @@ class SQLiteInventoryDatabase:
                        updated_part.manufacturer, updated_part.category, id_to_update))
         self.connection.commit()
 
-        self.inventory[id_to_update] = updated_part
-
     def get_length(self) -> int:
-        return len(self.inventory)
+        query = 'SELECT Count(*) FROM car_parts'
+        cursor = self.connection.cursor()
+        cursor.execute(query)
+        length = cursor.fetchone()[0]
+
+        return length
 
     def create_connection(self, path):
         connection = None
