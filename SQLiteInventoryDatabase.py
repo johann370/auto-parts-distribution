@@ -8,7 +8,6 @@ class SQLiteInventoryDatabase:
 
     def __init__(self, inventory={}, database='CarParts.db') -> None:
         self.connection = self.create_connection(database)
-        self.inventory = self.get_all_data()
 
     def get_part(self, part_id) -> CarPart:
         query = 'SELECT * FROM car_parts WHERE id = ?'
@@ -53,7 +52,6 @@ class SQLiteInventoryDatabase:
         connection = None
         try:
             connection = sqlite3.connect(path)
-            print('Connection to SQLite DB successful')
         except Error as e:
             print(f'The error "{e}" occurred')
 
