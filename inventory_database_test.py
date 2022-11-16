@@ -1,7 +1,7 @@
 import unittest
 import sqlite3
-from CarPart import CarPart
-from SQLiteInventoryDatabase import SQLiteInventoryDatabase
+from car_part import CarPart
+from sqlite_inventory_database import SQLiteInventoryDatabase
 
 
 class TestDatabaseMethods(unittest.TestCase):

@@ -1,6 +1,6 @@
 import sqlite3
 from sqlite3 import Error
-from CarPart import CarPart
+from car_part import CarPart
 
 
 class SQLiteInventoryDatabase:

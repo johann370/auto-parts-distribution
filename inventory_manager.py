@@ -1,6 +1,6 @@
-from CarPart import CarPart
-from InventoryDatabase import InventoryDatabase
-from UI import UI
+from car_part import CarPart
+from inventory_database import InventoryDatabase
+from ui import UI
 
 
 class InventoryManager:

@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from CarPart import CarPart
+from car_part import CarPart
 
 
 class InventoryDatabase(Protocol):

@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
-from CLI import CLI
-from CarPart import CarPart
+from cli import CLI
+from car_part import CarPart
 
 
 class TestCLI(unittest.TestCase):

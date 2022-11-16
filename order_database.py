@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from Order import Order
+from order import Order
 
 
 class OrderDatabase(Protocol):
@@ -20,4 +20,3 @@ class OrderDatabase(Protocol):
 
     def update_order(self, id_to_update, updated_order) -> None:
         raise NotImplementedError
-

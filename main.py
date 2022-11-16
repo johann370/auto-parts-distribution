@@ -1,6 +1,6 @@
-from CLI import CLI
-from InventoryManager import InventoryManager
-from SQLiteInventoryDatabase import SQLiteInventoryDatabase
+from cli import CLI
+from inventory_manager import InventoryManager
+from sqlite_inventory_database import SQLiteInventoryDatabase
 
 
 def main():
