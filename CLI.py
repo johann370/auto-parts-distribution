@@ -1,5 +1,11 @@
 class CLI:
     def get_part_info(self) -> dict:
+        '''This function gets the car part information from the user
+
+        :returns: A dict of car part information
+        :raises: ValueError
+        '''
+
         name = input('Enter part name: ')
         count = self.get_input_int('Enter part count: ')
         price = self.get_input_float('Enter price: ')
@@ -18,6 +24,11 @@ class CLI:
         }
 
     def get_updated_info(self, part_to_update) -> dict:
+        '''This functions gets the updated information from the user
+
+        :returns: A dict of updated car part information
+        '''
+
         name = input(
             'Enter new part name or Enter for no change: ') or part_to_update.name
         count = int(
@@ -37,12 +48,31 @@ class CLI:
         }
 
     def get_part_to_delete(self) -> int:
+        '''Gets the part id to delete
+
+        :returns: An int of the part id
+        '''
+
         return self.get_input_int('Enter id to delete: ')
 
     def get_part_to_update(self) -> int:
+        '''Gets the part id to update
+
+        :returns: An int of the part id
+        '''
+
         return self.get_input_int('Enter id to update: ')
 
     def get_input_int(self, prompt) -> int:
+        '''Gets an int from the user
+
+        :param prompt: A prompt to display to user
+        :type prompt: str
+
+        :returns: An int from user
+        :raises: TypeError, ValueError
+        '''
+
         input_int = input(prompt)
 
         if input_int == '':
@@ -57,6 +87,15 @@ class CLI:
         return int(input_int)
 
     def get_input_float(self, prompt) -> float:
+        '''Gets a float from the user
+
+        :param prompt: A prompt to display to user
+        :type prompt: str
+
+        :returns: A float from user
+        :raises: TypeError, ValueError
+        '''
+
         input_float = input(prompt)
 
         if input_float == '':
