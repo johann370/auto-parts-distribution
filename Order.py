@@ -1,3 +1,7 @@
+from dataclasses import dataclass
+
+@dataclass
+
 class Order:
     
     id = 0
@@ -6,4 +10,4 @@ class Order:
     full_parts_list_by_name = ('')
 
 
-
+   
