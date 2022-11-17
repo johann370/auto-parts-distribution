@@ -4,7 +4,7 @@ from typing import Protocol
 from order import Order
 
 
-class OrderDatabase(Protocol):
+class SQLiteOrderDatabase(Protocol):
     order: dict
 
     def __init__(self, order={}, database='Order.db') -> None:
@@ -30,10 +30,10 @@ class OrderDatabase(Protocol):
         self.connection.commit()
         self.inventory.pop(id_to_delete)
 
-        def update_part(self, id_to_update, updated_order) -> None:
-            query = 'UPDATE order SET id = ? WHERE id= ?'
-            cursor = self.connection.cursor()
-            cursor.execute(query, (updated_order.id, id_to_update))
+    def update_part(self, id_to_update, updated_order) -> None:
+        query = 'UPDATE order SET id = ? WHERE id= ?'
+        cursor = self.connection.cursor()
+        cursor.execute(query, (updated_order.id, id_to_update))
             self.connection.commit()
             self.order[id_to_update] = updated_order
 
