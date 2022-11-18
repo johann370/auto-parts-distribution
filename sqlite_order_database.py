@@ -30,7 +30,7 @@ class SQLiteOrderDatabase(Protocol):
         self.connection.commit()
         self.inventory.pop(id_to_delete)
 
-    def update_part(self, id_to_update, updated_order) -> None:
+    def update_order(self, id_to_update, updated_order) -> None:
         query = 'UPDATE order SET id = ? WHERE id= ?'
         cursor = self.connection.cursor()
         cursor.execute(query, (updated_order.id, id_to_update))
@@ -73,5 +73,5 @@ class SQLiteOrderDatabase(Protocol):
         def __str__(self) -> str:
             str_rep = ''
             for order in self.order.values():
-                str_rep += f'{part}'
+                str_rep += f'{order}'
             return str_rep
