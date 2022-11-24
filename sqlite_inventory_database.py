@@ -6,14 +6,14 @@ from car_part import CarPart
 class SQLiteInventoryDatabase:
     '''Inventory database class using sqlite'''
 
-    def __init__(self, database='CarParts.db') -> None:
+    def __init__(self, connection) -> None:
         '''Inits the inventory database
 
-        :param database: Name of sqlite database to connect to
-        :type database: str
+        :param connection: Sqlite3 connection to database
+        :type connection: sqlite3 connection
         '''
 
-        self.connection = self.create_connection(database)
+        self.connection = connection
 
     def get_part(self, part_id) -> CarPart:
         '''
@@ -91,20 +91,20 @@ class SQLiteInventoryDatabase:
 
         return length
 
-    def create_connection(self, path):
-        '''Returns a connection using the path to the database
-
-        :param path: The path to the sqlite database to connect to
-        :type path: str
-        :returns: The sqlite connection
+    def lower_count(self, id_to_lower, amount_to_lower) -> None:
         '''
-        connection = None
-        try:
-            connection = sqlite3.connect(path)
-        except Error as e:
-            print(f'The error "{e}" occurred')
+        This function lowers the count of a car part by a certain amount
 
-        return connection
+        :param id_to_lower: The part id to lower
+        :type id_to_lower: int
+        :param amount: The amount to remove from the count
+        :type amount: int
+        '''
+
+        query = 'UPDATE car_parts SET count = count - ? WHERE id = ?'
+        cursor = self.connection.cursor()
+        cursor.execute(query, (amount_to_lower, id_to_lower))
+        self.connection.commit()
 
     def get_all_data(self):
         '''Returns a dict of the car parts in the database as CarPart objects'''

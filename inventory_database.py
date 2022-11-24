@@ -6,11 +6,11 @@ from car_part import CarPart
 class InventoryDatabase(Protocol):
     '''Protocol class for the inventory database'''
 
-    def __init__(self, database) -> None:
+    def __init__(self, connection) -> None:
         '''Inits the inventory database
 
-        :param database: Name of database to connect to
-        :type database: str
+        :param connection: Connection to database
+        :type connection: Database connection
         '''
 
         raise NotImplementedError
@@ -63,6 +63,18 @@ class InventoryDatabase(Protocol):
         This function returns the number of parts in the inventory database
 
         :returns: Length of inventory database
+        '''
+
+        raise NotImplementedError
+
+    def lower_count(self, id_to_lower, amount_to_lower) -> None:
+        '''
+        This function lowers the count of a car part by a certain amount
+
+        :param id_to_lower: The part id to lower
+        :type id_to_lower: int
+        :param amount_to_lower: The amount to remove from the count
+        :type amount_to_lower: int
         '''
 
         raise NotImplementedError

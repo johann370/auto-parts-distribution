@@ -1,14 +1,14 @@
 from cli import CLI
 from inventory_manager import InventoryManager
 from sqlite_inventory_database import SQLiteInventoryDatabase
+import sqlite3
 
 
 def main():
     ui = CLI()
-    database = SQLiteInventoryDatabase(database='CarParts.db')
+    connection = sqlite3.connect('CarParts.db')
+    database = SQLiteInventoryDatabase(connection)
     im = InventoryManager(ui, database)
-    im.display_parts()
-    im.delete_part()
 
 
 if __name__ == '__main__':
