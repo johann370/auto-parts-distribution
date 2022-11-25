@@ -1,13 +1,14 @@
 from dataclasses import dataclass
 
+
 @dataclass
-
 class Order:
-    
-    id = 0
-    parts_received = '0'
-    full_parts_list = '0,0'
-    full_parts_list_by_name = ''
+    '''Class for storing order information'''
 
-
-   
+    order_id: int
+    first_name: str
+    last_name: str
+    address: str
+    car_parts: str
+    card_number: str
+    total: float
