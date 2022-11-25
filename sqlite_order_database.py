@@ -17,10 +17,7 @@ class SQLiteOrderDatabase_AddOrder():
         cursor = self.connection.cursor()
         cursor.execute(query, (new_order.order_id))
         self.connection.commit()
-        //order_id = cursor.lastrowid()
-        //new_order.id = order_id
-        //self.order[new_order.id] = new_order
-        //call the lower_count function of the sqlite_inventory_database through the api
+        #call the lower_count function of the sqlite_inventory_database through the api
 
     
     def create_connection(self,path):
