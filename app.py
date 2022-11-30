@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    return 'Hello World'
+    return '<p>Hello World</p>'
 
 
 @app.route('/parts', methods=['GET'])
