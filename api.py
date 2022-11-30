@@ -8,6 +8,11 @@ from order import Order
 app = Flask(__name__)
 
 
+@app.route('/')
+def home_page():
+    return 'Hello World'
+
+
 @app.route('/parts', methods=['GET'])
 def get_parts():
     connection = sqlite3.connect('AutoPartsDistribution.db')
