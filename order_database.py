@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from order import Order
+from Order import Order
 
 
 class OrderDatabase(Protocol):

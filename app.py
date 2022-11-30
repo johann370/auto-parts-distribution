@@ -3,7 +3,7 @@ from sqlite_inventory_database import SQLiteInventoryDatabase
 from sqlite_order_database import SQLiteOrderDatabase
 import json
 import sqlite3
-from order import Order
+from Order import Order
 
 app = Flask(__name__)
 
