@@ -43,5 +43,21 @@ def save_order():
     return 'processed order'
 
 
+@app.route('/orders', methods=['GET'])
+def get_orders():
+    connection = sqlite3.connect(
+        '/home/jmdragon370/auto-parts-distribution/AutoPartsDistribution.db')
+    order_database = SQLiteOrderDatabase(connection)
+
+    orders = order_database.get_all_data().values()
+    orders_json = []
+
+    for part in orders:
+        orders_json.append(part.__dict__)
+
+    connection.close()
+    return json.dumps(orders_json)
+
+
 if __name__ == '__main__':
     app.run()

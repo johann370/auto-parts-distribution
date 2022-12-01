@@ -28,10 +28,11 @@ class SQLiteOrderDatabase():
 
     def get_all_data(self):
         temp_dict = {}
-        result = self.execute_query('SELECT * FROM order')
+        result = self.execute_query('SELECT * FROM orders')
 
         for order in result:
-            temp_dict[order[0]] = Order(id=order[0])
+            temp_dict[order[0]] = Order(
+                order_id=order[0], first_name=order[1], last_name=order[2], address=order[3], total=order[4], car_parts=order[5], card_number=order[6])
 
         return temp_dict
 
