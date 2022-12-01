@@ -44,3 +44,7 @@ def save_order():
         inventory_database.lower_count(part['id'], part['count'])
 
     return 'processed order'
+
+
+if __name__ == '__main__':
+    app.run()
