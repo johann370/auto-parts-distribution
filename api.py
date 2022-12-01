@@ -8,11 +8,6 @@ from order import Order
 app = Flask(__name__)
 
 
-@app.route('/')
-def home_page():
-    return '<p>Hello World</p>'
-
-
 @app.route('/parts', methods=['GET'])
 def get_parts():
     connection = sqlite3.connect('AutoPartsDistribution.db')
@@ -44,7 +39,3 @@ def save_order():
         inventory_database.lower_count(part['id'], part['count'])
 
     return 'processed order'
-
-
-if __name__ == '__main__':
-    app.run()
