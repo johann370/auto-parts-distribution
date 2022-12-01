@@ -10,7 +10,8 @@ app = Flask(__name__)
 
 @app.route('/parts', methods=['GET'])
 def get_parts():
-    connection = sqlite3.connect('AutoPartsDistribution.db')
+    connection = sqlite3.connect(
+        '/home/jmdragon370/auto-parts-distribution/AutoPartsDistribution.db')
     inventory_database = SQLiteInventoryDatabase(connection)
 
     car_parts = inventory_database.get_all_data().values()
@@ -25,7 +26,8 @@ def get_parts():
 
 @app.route('/order', methods=['POST'])
 def save_order():
-    connection = sqlite3.connect('AutoPartsDistribution.db')
+    connection = sqlite3.connect(
+        '/home/jmdragon370/auto-parts-distribution/AutoPartsDistribution.db')
     order_database = SQLiteOrderDatabase(connection)
     inventory_database = SQLiteInventoryDatabase(connection)
 
