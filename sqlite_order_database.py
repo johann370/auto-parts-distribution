@@ -1,7 +1,7 @@
 import sqlite3
 from sqlite3 import Error
 from typing import Protocol
-from Order import Order
+from order import Order
 
 
 class SQLiteOrderDatabase():

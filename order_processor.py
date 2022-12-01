@@ -1,5 +1,5 @@
 
-from Order import Order
+from order import Order
 from Database import Database
 from ui import UI
 from payment import Payment
