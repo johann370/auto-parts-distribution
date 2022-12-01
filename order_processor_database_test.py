@@ -1,6 +1,6 @@
 import unittest
 import sqlite3
-from order import Order
+from my_order import Order
 from sqlite_order_database import SQLiteOrderDatabase
 
 
