@@ -6,28 +6,38 @@ import json
 
 
 class SQLiteOrderDatabase():
+    '''Order database class using sqlite'''
+
     def __init__(self, connection) -> None:
+        '''Inits the order database
+
+        :param connection: Connection to database
+        :type connection: Database connection
+        '''
+
         self.connection = connection
 
     def add_order(self, new_order) -> None:
+        '''
+        This function adds a new order to the order database
+        (Requirement 4.6)
+
+        :param new_order: Order to add to the database
+        :type new_order: Order
+        '''
+
         query = 'INSERT INTO orders(first_name, last_name, address, total, car_parts, card_number) VALUES(?, ?, ?, ?, ?, ?)'
         cursor = self.connection.cursor()
         cursor.execute(query, (new_order.first_name, new_order.last_name, new_order.address,
                        new_order.total, new_order.car_parts, new_order.card_number))
         self.connection.commit()
-        # call the lower_count function of the sqlite_inventory_database through the api
-
-    def create_connection(self, path):
-        connection = None
-        try:
-            connection = sqlite3.connect(path)
-            print('Connection to SQLite DB successful')
-        except Error as e:
-            print(f'The error "{e}" occurred')
-
-        return connection
 
     def get_all_data(self):
+        '''
+        Returns a dict of the orders in the database as Order objects
+        (Requirement: 3.7)
+        '''
+
         temp_dict = {}
         result = self.execute_query('SELECT * FROM orders')
 
@@ -38,6 +48,13 @@ class SQLiteOrderDatabase():
         return temp_dict
 
     def execute_query(self, query):
+        '''Executes a query on the database and returns the result
+
+        :param query: The SQL query to execute
+        :type query: str
+        :returns: List of entries that match the query
+        '''
+
         cursor = self.connection.cursor()
         result = None
 
@@ -49,6 +66,8 @@ class SQLiteOrderDatabase():
             print(f'Error: {e}')
 
     def __str__(self) -> str:
+        '''Returns a string representation of the inventory database'''
+
         str_rep = ''
         for order in self.order.values():
             str_rep += f'{order}'

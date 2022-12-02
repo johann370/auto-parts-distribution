@@ -4,19 +4,23 @@ from my_order import Order
 
 
 class OrderDatabase(Protocol):
-    order: dict
+    '''Protocol class for the order database'''
 
-    def __init__(self, order={}) -> None:
-        raise NotImplementedError
+    def __init__(self, connection) -> None:
+        '''Inits the order database
 
-    def get_order(self, order_id) -> Order:
+        :param connection: Connection to database
+        :type connection: Database connection
+        '''
+
         raise NotImplementedError
 
     def add_order(self, new_order) -> None:
-        raise NotImplementedError
+        '''
+        This function adds a new order to the order database
+        (Requirement 4.6)
 
-    def delete_order(self, id_to_delete) -> None:
-        raise NotImplementedError
-
-    def update_order(self, id_to_update, updated_order) -> None:
+        :param new_order: Order to add to the database
+        :type new_order: Order
+        '''
         raise NotImplementedError
