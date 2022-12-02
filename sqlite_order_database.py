@@ -2,6 +2,7 @@ import sqlite3
 from sqlite3 import Error
 from typing import Protocol
 from my_order import Order
+import json
 
 
 class SQLiteOrderDatabase():
@@ -32,7 +33,7 @@ class SQLiteOrderDatabase():
 
         for order in result:
             temp_dict[order[0]] = Order(
-                order_id=order[0], first_name=order[1], last_name=order[2], address=order[3], total=order[4], car_parts=order[5], card_number=order[6])
+                order_id=order[0], first_name=order[1], last_name=order[2], address=order[3], total=order[4], car_parts=json.loads(order[5]), card_number=order[6])
 
         return temp_dict
 
