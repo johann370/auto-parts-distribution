@@ -102,3 +102,14 @@ class TestDatabaseMethods(unittest.TestCase):
                                   (4, 'tires', 5000, 50.00,
                                    'Apollo Tyres', 'tires'),
                                   (5, 'name', 856, 1.25, 'xyz', 'xyz'), ])
+
+    def test_lower_count(self):
+        '''Test Case 16'''
+
+        self.database.lower_count(4, 1000)
+        self.cursor.execute('SELECT count from car_parts WHERE id = 4')
+        result = self.cursor.fetchone()
+
+        updated_count = 4000
+
+        self.assertEqual(updated_count, result[0])
