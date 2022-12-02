@@ -6,7 +6,8 @@ from sqlite_inventory_database import SQLiteInventoryDatabase
 
 class TestDatabaseMethods(unittest.TestCase):
     def setUp(self):
-        self.database = SQLiteInventoryDatabase(database=':memory:')
+        self.database = SQLiteInventoryDatabase(
+            connection=sqlite3.connect(':memory:'))
         self.conn = self.database.connection
         self.cursor = self.conn.cursor()
 
@@ -26,6 +27,8 @@ class TestDatabaseMethods(unittest.TestCase):
         self.conn.close()
 
     def test_get_part(self):
+        '''Test Case 11'''
+
         car_part = CarPart(id=4, name='tires', count=5000, price=50.00,
                            manufacturer='Apollo Tyres', category='tires')
 
@@ -34,6 +37,8 @@ class TestDatabaseMethods(unittest.TestCase):
         self.assertEqual(database_part, car_part)
 
     def test_get_all_parts(self):
+        '''Test Case 12'''
+
         car_parts = {
             1: CarPart(id=1, name='test name', count=10, price=20.00, manufacturer='test manufacturer', category='test category'),
             2: CarPart(id=2, name='random', count=1000, price=10.50, manufacturer='manu', category='cat'),
@@ -47,6 +52,8 @@ class TestDatabaseMethods(unittest.TestCase):
         self.assertDictEqual(database_parts, car_parts)
 
     def test_add_part(self):
+        '''Test Case 13'''
+
         new_part = CarPart(id=0, name='new part', count=1, price=2.33,
                            manufacturer='new manufacturer', category='new category')
 
@@ -64,6 +71,8 @@ class TestDatabaseMethods(unittest.TestCase):
                                   (6, 'new part', 1, 2.33, 'new manufacturer', 'new category')])
 
     def test_delete_part(self):
+        '''Test Case 14'''
+
         self.database.delete_part(2)
 
         self.cursor.execute('SELECT * FROM car_parts')
@@ -76,6 +85,8 @@ class TestDatabaseMethods(unittest.TestCase):
                                   (5, 'name', 856, 1.25, 'xyz', 'xyz'), ])
 
     def test_update_part(self):
+        '''Test Case 15'''
+
         updated_part = CarPart(id=2, name='updated name', count=1624, price=68.53,
                                manufacturer='updated manufacturer', category='updated category')
 
